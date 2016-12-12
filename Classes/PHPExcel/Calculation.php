@@ -2102,7 +2102,7 @@ class PHPExcel_Calculation
         if ($workbook !== null) {
             $instance = $workbook->getCalculationEngine();
             if (isset($instance)) {
-                return $instance;  
+                return $instance;
             }
         }
 
@@ -3318,7 +3318,7 @@ class PHPExcel_Calculation
             } elseif ($isOperandOrFunction && !$expectingOperator) {    // do we now have a function/variable/number?
                 $expectingOperator = true;
                 $expectingOperand = false;
-                $val = $match[1];
+                $val = (string) $match[1];
                 $length = strlen($val);
 //                echo 'Element with value '.$val.' is an Operand, Variable, Constant, String, Number, Cell Reference or Function<br />';
 
@@ -3521,7 +3521,7 @@ class PHPExcel_Calculation
         foreach ($tokens as $tokenData) {
 //            print_r($tokenData);
 //            echo '<br />';
-            $token = $tokenData['value'];
+            $token = (string) $tokenData['value'];
 //            echo '<b>Token is '.$token.'</b><br />';
             // if the token is a binary operator, pop the top two values off the stack, do the operation, and push the result back on the stack
             if (isset(self::$binaryOperators[$token])) {
